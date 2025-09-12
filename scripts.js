@@ -1,26 +1,11 @@
-function showCaptcha() {
-    // hCaptcha 인증을 보이게 설정
-    const captchaDiv = document.getElementById('hcaptcha');
-    captchaDiv.style.display = 'block';
+function showResult() {
+    // 결과 메시지 표시
+    const result = document.getElementById('result');
+    result.style.display = 'block';
 }
 
-function onCaptchaSuccess(token) {
-    // hCaptcha 인증 성공 시, 업적 및 후기 보기 활성화
-    const captchaDiv = document.getElementById('hcaptcha');
-    captchaDiv.style.display = 'none';  // hCaptcha 숨기기
-    
-    const resultDiv = document.getElementById('result');
-    const reviewBtn = document.querySelector('.review-btn');
-    const fanReviews = document.getElementById('fanReviews');
-
-    // 업적 확인 결과 및 후기를 표시
-    resultDiv.style.display = 'block';
-    reviewBtn.style.display = 'block';  // 후기 버튼 보이기
-    fanReviews.style.display = 'none'; // 후기는 처음에 숨겨짐
-}
-
-// 후기를 보여주는 함수
 function showReview() {
+    // 팬들의 후기를 동적으로 추가
     const reviews = [
         "이찬희가 컵라면을 먹고 나서, 저는 더 이상 다른 사람과 대화할 수 없었습니다. 그저 그가 대단해 보였거든요! - 팬1",
         "이찬희가 1초 만에 피자를 먹을 때, 나는 시간의 경계를 넘은 느낌이 들었어요. - 팬2",
@@ -45,5 +30,4 @@ function showReview() {
     });
 
     document.getElementById('fanReviews').innerHTML = reviewsHTML;
-    document.getElementById('fanReviews').style.display = 'block';
 }
