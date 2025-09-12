@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이찬희는 위대하다</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- hCaptcha API -->
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -19,28 +17,18 @@
     <p>그의 놀라운 업적을 클릭하여 확인해보세요.</p>
     
     <div class="button-container">
-        <!-- 업적 확인 버튼 클릭 시 hCaptcha 인증 -->
-        <button class="btn" onclick="showCaptcha()">이찬희의 업적 확인!</button>
+        <button class="btn" onclick="showResult()">이찬희의 업적 확인!</button>
     </div>
 
-    <!-- hCaptcha 인증을 위한 div -->
-    <div id="hcaptcha" style="display:none;">
-        <div class="hcaptcha-container">
-            <div class="hcaptcha" 
-                 data-sitekey="5960a818-ca5e-4820-b484-a4ccefb43a80" 
-                 data-callback="onCaptchaSuccess"></div>
-        </div>
-    </div>
-
-    <div class="result" id="result" style="display: none;">
+    <div class="result" id="result">
         <p>이찬희가 첫 번째로 컵라면을 먹었을 때, 세상 모든 라면이 그에게 경의를 표했습니다!</p>
     </div>
 
-    <div id="fanReviews" style="display: none;">
+    <div id="fanReviews">
         <!-- 팬들의 후기들이 여기에 동적으로 추가됩니다 -->
     </div>
 
-    <div class="review-btn" onclick="showReview()" style="display: none;">팬들의 후기를 확인해보세요!</div>
+    <div class="review-btn" onclick="showReview()">팬들의 후기를 확인해보세요!</div>
 </div>
 
 <footer>
