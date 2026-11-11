@@ -1,41 +1,79 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이찬희는 위대하다</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>이찬희는 위대하다 - 李燦熙 官方网站</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div id="pop" role="dialog" aria-label="공지">
+  <div class="w">
+    <button class="x" onclick="closePop()" aria-label="닫기">×</button>
+    <h2>恭喜！축하합니다!</h2>
+    <p>당신은 <b>1,000,000번째</b> 방문자입니다!</p>
+    <button class="go" onclick="closePop()">立即领取 지금 확인</button>
+  </div>
+</div>
 
+<div class="ticker"><span>★ 欢迎光临 李燦熙 官方网站 ★ 이찬희는 위대하다 ★ 무료 · 무설치 · 즉시 확인 ★ 最新业绩 매일 업데이트 ★ 컵라면이 경의를 표했습니다 ★</span></div>
+<div class="top"><span>设为首页 · 收藏本站</span><span>在线 <b id="online">2,481</b>명</span></div>
+
+<div class="wrap">
 <header>
-    <h1>이찬희는 위대하다!</h1>
+  <div class="cn">李 燦 熙 官 方 网 站</div>
+  <h1>이찬희는 위대하다!</h1>
+  <div class="sub">全球第一 · 世界最伟大 · 永久免费</div>
 </header>
 
-<div class="main-content">
+<nav>
+  <a href="#top">首页 홈</a><a href="#top">업적 目录</a><a href="#fanReviews">팬 후기</a><a href="#top">고속 下载</a><a href="#top">客服</a>
+</nav>
+
+<div class="cols">
+  <aside class="ad">
+    <span class="big">HOT!</span>
+    컵라면 무료 증정<br>지금 클릭!
+    <br><button onclick="openPop()">立即领取</button>
+  </aside>
+
+  <main id="top">
+    <div class="box-title">▶ 이찬희 업적 专区</div>
     <p>이찬희가 세상을 어떻게 위대하게 바꿨는지 알고 싶나요?</p>
     <p>그의 놀라운 업적을 클릭하여 확인해보세요.</p>
-    
-    <div class="button-container">
-        <button class="btn" onclick="showResult()">이찬희의 업적 확인!</button>
-    </div>
+
+    <div class="dl"><span>高清 1080P</span><span>无需注册</span><span>无广告 (거짓말)</span></div>
+    <button class="btn" onclick="showResult()">이찬희의 업적 확인!</button>
 
     <div class="result" id="result">
-        <p>이찬희가 첫 번째로 컵라면을 먹었을 때, 세상 모든 라면이 그에게 경의를 표했습니다!</p>
+      이찬희가 첫 번째로 컵라면을 먹었을 때, 세상 모든 라면이 그에게 경의를 표했습니다!
     </div>
 
-    <div id="fanReviews">
-        <!-- 팬들의 후기들이 여기에 동적으로 추가됩니다 -->
+    <div class="stats">
+      <div><b id="c1">0</b>방문자</div><div><b id="c2">0</b>오늘 조회</div><div><b>99.9%</b>만족도</div>
     </div>
 
+    <div id="fanReviews"></div>
     <div class="review-btn" onclick="showReview()">팬들의 후기를 확인해보세요!</div>
+  </main>
+
+  <aside class="ad r">
+    <span class="big">热门</span>
+    <ol class="rank" style="font-size:11px;padding-left:16px">
+      <li class="hot">컵라면</li><li>피자 1초</li><li>지구 회전</li><li>무지개</li>
+    </ol>
+    <button onclick="openPop()">高速下载</button>
+  </aside>
 </div>
 
 <footer>
-    <p>© 2025 이찬희의 팬클럽. All rights reserved.</p>
+  <p>© 2025 이찬희의 팬클럽. All rights reserved.</p>
+  <p class="warn">本站所有内容仅供娱乐，如有雷同纯属巧合 · 备案号：京ICP备00000000号</p>
 </footer>
+</div>
+
+<div class="float" onclick="openPop()">在线客服</div>
 
 <script src="scripts.js"></script>
-
 </body>
 </html>
