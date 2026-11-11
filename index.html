@@ -4,7 +4,65 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>이찬희는 위대하다 - 李燦熙 官方网站</title>
-<link rel="stylesheet" href="styles.css">
+<style>
+:root{--bg:#fff7d6;--ink:#222;--red:#e60012;--gold:#ffd700;--blue:#0033cc;--card:#fff;--line:#e60012;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2a0608;--ink:#fff3c4;--card:#3d0b0e;--gold:#ffe14d}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg) repeating-linear-gradient(45deg,transparent 0 14px,rgba(230,0,18,.07) 14px 28px);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo","Microsoft YaHei",sans-serif;font-size:15px;text-align:center}
+a{color:var(--blue)}
+.wrap{max-width:980px;margin:0 auto;padding:0 8px 40px}
+.ticker{background:var(--red);color:var(--gold);font-weight:bold;overflow:hidden;white-space:nowrap;padding:6px 0;border-bottom:3px solid var(--gold)}
+.ticker span{display:inline-block;padding-left:100%;animation:run 22s linear infinite}
+@keyframes run{to{transform:translateX(-100%)}}
+.top{display:flex;justify-content:space-between;font-size:12px;padding:4px 8px;background:#111;color:#ccc}
+.top b{color:var(--gold)}
+header{background:linear-gradient(180deg,#b80010,#7a0008);border:4px double var(--gold);margin:8px 0;padding:22px 10px;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.35) 50%,transparent 60%);animation:shine 3s infinite}
+@keyframes shine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.cn{color:var(--gold);letter-spacing:.4em;font-size:13px}
+h1{margin:6px 0;font-size:clamp(28px,7vw,52px);color:var(--gold);text-shadow:3px 3px 0 #000,0 0 18px #ff0;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{color:#fff}}
+.sub{color:#fff;font-size:13px}
+nav{display:flex;flex-wrap:wrap;gap:3px;margin:6px 0}
+nav a{flex:1 1 90px;background:linear-gradient(#ffe86b,#f5b400);border:1px solid #a06a00;color:#900;font-weight:bold;padding:7px 4px;text-decoration:none}
+nav a:hover{background:var(--red);color:var(--gold)}
+.cols{display:grid;grid-template-columns:130px 1fr 130px;gap:8px;align-items:start}
+.ad{border:2px dashed var(--red);background:var(--card);padding:8px 4px;font-size:12px;font-weight:bold;position:sticky;top:8px}
+.ad .big{font-size:26px;color:var(--red);display:block;animation:blink 0.8s steps(2) infinite}
+.ad button{margin-top:6px;background:#2a9d00;color:#fff;border:2px outset #6f6;font-weight:bold;padding:6px;cursor:pointer;width:90%}
+main{background:var(--card);border:3px solid var(--red);padding:14px 12px}
+.box-title{background:linear-gradient(90deg,var(--red),#ff6a00);color:#fff;text-align:left;padding:5px 10px;font-weight:bold;margin:-14px -12px 12px}
+main p{font-size:17px;margin:8px 0}
+.btn{background:linear-gradient(#ff5a1f,#c20000);color:#ffe;font-size:20px;font-weight:bold;border:3px outset #ffb27a;padding:12px 26px;cursor:pointer;margin-top:10px;animation:pulse 1s infinite}
+.btn:hover{filter:brightness(1.2)}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.dl{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.dl span{background:#0a4;color:#fff;font-size:12px;padding:5px 9px;border-radius:3px;font-weight:bold;cursor:pointer}
+.dl span:nth-child(2){background:#0074d9}.dl span:nth-child(3){background:#b10dc9}
+.result{display:none;margin:16px 0;border:3px dashed var(--red);background:#fff3a8;color:#b00000;font-size:21px;font-weight:bold;padding:14px}
+.result.on{display:block;animation:pop .35s}
+@keyframes pop{from{transform:scale(.6);opacity:0}}
+.review-btn{display:inline-block;margin:14px 0 4px;color:var(--blue);font-weight:bold;font-size:17px;text-decoration:underline;cursor:pointer}
+.fan-review{background:linear-gradient(90deg,#f0ad4e,#ffd27a);border-left:8px solid var(--red);color:#4a1500;text-align:left;font-weight:bold;padding:10px 12px;margin:8px auto;max-width:600px;font-size:14px}
+.fan-review small{display:block;color:#a00;font-weight:normal;margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin:10px 0}
+.stats div{background:#111;color:var(--gold);padding:8px 2px;font-size:12px}
+.stats b{display:block;font-size:20px;color:#0f0;font-family:monospace}
+.rank{text-align:left;font-size:13px;margin:0;padding-left:20px}
+.rank li{padding:3px 0;border-bottom:1px dotted #aaa}
+.hot{color:var(--red);font-weight:bold}
+footer{background:#111;color:#aaa;font-size:12px;padding:14px 8px;margin-top:12px;border-top:4px solid var(--gold)}
+footer .warn{color:var(--gold)}
+.float{position:fixed;right:8px;bottom:calc(10px + env(safe-area-inset-bottom,0px));background:var(--red);color:var(--gold);border:2px solid var(--gold);padding:8px 10px;font-weight:bold;font-size:12px;cursor:pointer;z-index:5;animation:blink 1s steps(2) infinite}
+#pop{position:fixed;inset:0;background:rgba(0,0,0,.65);display:flex;align-items:center;justify-content:center;z-index:9;padding:16px}
+#pop .w{background:#fff;color:#222;border:5px solid var(--gold);max-width:340px;width:100%;position:relative;padding:22px 14px;box-shadow:0 0 0 4px var(--red)}
+#pop h2{color:var(--red);margin:0 0 8px;font-size:24px}
+#pop .x{position:absolute;top:2px;right:6px;border:0;background:none;font-size:22px;cursor:pointer;color:#555}
+#pop .go{background:var(--red);color:var(--gold);border:0;padding:10px 22px;font-weight:bold;font-size:17px;cursor:pointer}
+@media(max-width:760px){.cols{grid-template-columns:1fr}.ad{position:static}.ad.r{order:3}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
 </head>
 <body>
 <div id="pop" role="dialog" aria-label="공지">
@@ -74,6 +132,35 @@
 
 <div class="float" onclick="openPop()">在线客服</div>
 
-<script src="scripts.js"></script>
+<script>
+function showResult(){var r=document.getElementById('result');r.classList.remove('on');void r.offsetWidth;r.classList.add('on');}
+function showReview(){
+  var reviews=[
+    "이찬희가 컵라면을 먹고 나서, 저는 더 이상 다른 사람과 대화할 수 없었습니다. 그저 그가 대단해 보였거든요! - 팬1",
+    "이찬희가 1초 만에 피자를 먹을 때, 나는 시간의 경계를 넘은 느낌이 들었어요. - 팬2",
+    "그가 지구의 회전 속도를 바꿔 놓았다고 들었을 때, 나는 그를 신으로 섬기기로 결심했습니다. - 팬3",
+    "이찬희가 하루에 100번의 ‘안녕하세요’라고 인사를 했을 때, 나는 내 인생이 변화했다는 걸 느꼈습니다. - 팬4",
+    "이찬희가 공기보다 가벼운 존재임을 깨닫고, 이제 나는 숨을 쉴 때마다 그의 위대함을 느낍니다. - 팬5",
+    "이찬희가 커피를 마셨을 때, 그 커피는 스스로를 ‘이찬희의 음료’라고 칭하며 존경을 표했습니다. - 팬6",
+    "이찬희가 한 번 웃을 때, 지구의 중력장이 잠시 멈추는 걸 느꼈습니다. 모든 물체가 그의 웃음에 복종하기 시작했죠. - 팬7",
+    "이찬희가 10초 만에 한 권의 책을 읽었을 때, 나는 책이 그에게도 경의를 표하는 순간을 목격했습니다. - 팬8",
+    "이찬희가 두 손을 흔들었을 때, 그 바람이 3개의 나라를 동시에 강타하고 평화를 가져왔습니다. - 팬9",
+    "이찬희가 커플 아이스크림을 한 입에 먹었을 때, 그는 사랑의 진정한 의미를 깨달은 사람처럼 보였어요. - 팬10",
+    "이찬희가 다이어트를 시작했을 때, 단순히 칼로리가 두려워 떨며 도망갔습니다. - 팬11",
+    "이찬희가 태양을 보며 ‘괜찮다’라고 말했다. 그 순간, 태양이 조금 더 밝아졌습니다. - 팬12",
+    "이찬희가 일어날 때, 온 세상의 침대가 그를 위해 자리를 양보했습니다. - 팬13",
+    "이찬희가 무지개를 두 손으로 움켜잡았을 때, 무지개는 그의 발밑에 완벽히 포개졌습니다. - 팬14",
+    "이찬희의 발자국이 땅에 찍힐 때마다, 그 땅은 더 푸르게 변합니다. 농부들은 그의 발자국을 금으로 만들어서 팔고 있습니다. - 팬15"
+  ];
+  var h="";
+  reviews.forEach(function(t,i){h+='<div class="fan-review">'+t+'<small>★★★★★ 五星好评 · 2025-0'+(1+i%9)+'-'+(10+i)+' · 已认证</small></div>';});
+  document.getElementById('fanReviews').innerHTML=h;
+}
+function closePop(){document.getElementById('pop').style.display='none';}
+function openPop(){document.getElementById('pop').style.display='flex';}
+function count(id,to){var el=document.getElementById(id),n=0,s=Math.ceil(to/60);var t=setInterval(function(){n=Math.min(to,n+s);el.textContent=n.toLocaleString();if(n>=to)clearInterval(t);},25);}
+count('c1',1048576);count('c2',88888);
+setInterval(function(){var o=document.getElementById('online');o.textContent=(2300+Math.floor(Math.random()*400)).toLocaleString();},2500);
+</script>
 </body>
 </html>
