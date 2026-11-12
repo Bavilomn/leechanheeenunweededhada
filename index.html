@@ -60,6 +60,8 @@ footer .warn{color:var(--gold)}
 #pop h2{color:var(--red);margin:0 0 8px;font-size:24px}
 #pop .x{position:absolute;top:2px;right:6px;border:0;background:none;font-size:22px;cursor:pointer;color:#555}
 #pop .go{background:var(--red);color:var(--gold);border:0;padding:10px 22px;font-weight:bold;font-size:17px;cursor:pointer}
+
+.game-section{margin:14px 0 0;background:var(--card);border:3px solid var(--red);padding:14px 12px}.game-intro{font-size:14px!important}.game-wrap{max-width:420px;margin:10px auto 0;border:4px ridge var(--gold);background:#142b4a;overflow:hidden;touch-action:manipulation}#dodgeGame{display:block;width:100%;height:auto;aspect-ratio:3/4;touch-action:none;cursor:pointer}.game-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:8px}.game-controls button{background:linear-gradient(#ffe86b,#f5b400);border:2px outset #a06a00;color:#900;font-weight:bold;padding:8px 14px;cursor:pointer}.game-score{font-weight:bold;color:var(--red);margin:6px 0}
 @media(max-width:760px){.cols{grid-template-columns:1fr}.ad{position:static}.ad.r{order:3}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
@@ -124,6 +126,8 @@ footer .warn{color:var(--gold)}
   </aside>
 </div>
 
+<section class="game-section" aria-labelledby="gameTitle"><div class="box-title" id="gameTitle">▶ 이찬희의 벽 피하기 게임</div><p class="game-intro">화면을 터치하거나 버튼을 눌러 날아오르세요. 벽 사이를 통과하며 최고 기록에 도전!</p><div class="game-score">점수 <span id="gameScore">0</span> · 최고 기록 <span id="gameBest">0</span></div><div class="game-wrap"><canvas id="dodgeGame" width="360" height="480" aria-label="터치해서 벽을 피하는 게임"></canvas></div><div class="game-controls"><button type="button" id="gameStart">게임 시작</button><button type="button" id="gameJump">터치해서 날기</button></div><p id="gameMessage" aria-live="polite">게임 시작을 누르거나 게임 화면을 터치하세요!</p></section>
+
 <footer>
   <p>© 2025 이찬희의 팬클럽. All rights reserved.</p>
   <p class="warn">本站所有内容仅供娱乐，如有雷同纯属巧合 · 备案号：京ICP备00000000号</p>
@@ -161,6 +165,14 @@ function openPop(){document.getElementById('pop').style.display='flex';}
 function count(id,to){var el=document.getElementById(id),n=0,s=Math.ceil(to/60);var t=setInterval(function(){n=Math.min(to,n+s);el.textContent=n.toLocaleString();if(n>=to)clearInterval(t);},25);}
 count('c1',1048576);count('c2',88888);
 setInterval(function(){var o=document.getElementById('online');o.textContent=(2300+Math.floor(Math.random()*400)).toLocaleString();},2500);
+(function(){var canvas=document.getElementById('dodgeGame'),ctx=canvas.getContext('2d'),scoreEl=document.getElementById('gameScore'),bestEl=document.getElementById('gameBest'),msg=document.getElementById('gameMessage'),bird={x:82,y:220,vy:0,r:13},pipes=[],score=0,best=Number(localStorage.getItem('leechanheeGameBest')||0),state='ready',last=0,spawn=0;bestEl.textContent=best;
+function reset(){bird.y=220;bird.vy=0;pipes=[];score=0;spawn=0;scoreEl.textContent='0';state='playing';msg.textContent='벽을 피하세요!';last=0;requestAnimationFrame(loop)}
+function flap(){if(state==='ready'||state==='over'){reset();return}bird.vy=-360}
+function addPipe(){var gap=148,top=55+Math.random()*190;pipes.push({x:368,top:top,gap:gap,scored:false})}
+function draw(){ctx.clearRect(0,0,360,480);var sky=ctx.createLinearGradient(0,0,0,480);sky.addColorStop(0,'#64c8ff');sky.addColorStop(1,'#e6f7ff');ctx.fillStyle=sky;ctx.fillRect(0,0,360,480);ctx.fillStyle='rgba(255,255,255,.8)';[[40,76],[210,118],[300,60]].forEach(function(c){ctx.beginPath();ctx.arc(c[0],c[1],18,0,Math.PI*2);ctx.arc(c[0]+20,c[1]-7,22,0,Math.PI*2);ctx.arc(c[0]+43,c[1],16,0,Math.PI*2);ctx.fill()});pipes.forEach(function(p){ctx.fillStyle='#159447';ctx.fillRect(p.x,0,52,p.top);ctx.fillRect(p.x,p.top+p.gap,52,480);ctx.fillStyle='#0b7135';ctx.fillRect(p.x-5,p.top-14,62,14);ctx.fillRect(p.x-5,p.top+p.gap,62,14)});ctx.fillStyle='#e60012';ctx.beginPath();ctx.arc(bird.x,bird.y,bird.r,0,Math.PI*2);ctx.fill();ctx.fillStyle='#ffd700';ctx.beginPath();ctx.moveTo(bird.x+8,bird.y);ctx.lineTo(bird.x+23,bird.y+4);ctx.lineTo(bird.x+8,bird.y+8);ctx.fill();ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(bird.x+4,bird.y-4,4,0,Math.PI*2);ctx.fill();ctx.fillStyle='#111';ctx.beginPath();ctx.arc(bird.x+5,bird.y-4,2,0,Math.PI*2);ctx.fill();ctx.fillStyle='#dca900';ctx.fillRect(0,464,360,16);ctx.fillStyle='#8a5a00';for(var x=0;x<360;x+=24)ctx.fillRect(x,464,12,5);if(state!=='playing'){ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(28,190,304,84);ctx.fillStyle='#ffe14d';ctx.textAlign='center';ctx.font='bold 21px sans-serif';ctx.fillText(state==='over'?'게임 끝!':'벽 피하기',180,224);ctx.font='bold 14px sans-serif';ctx.fillText(state==='over'?'시작 버튼을 눌러 다시 도전':'터치해서 게임 시작',180,250)}}
+function loop(t){if(state!=='playing')return;var dt=Math.min((t-last)/1000||0,.04);last=t;bird.vy+=920*dt;bird.y+=bird.vy*dt;spawn+=dt;if(spawn>1.45){addPipe();spawn=0}pipes.forEach(function(p){p.x-=150*dt;if(!p.scored&&p.x+52<bird.x){p.scored=true;score++;scoreEl.textContent=score}});pipes=pipes.filter(function(p){return p.x>-65});var hit=bird.y-bird.r<0||bird.y+bird.r>464||pipes.some(function(p){return bird.x+bird.r>p.x&&bird.x-bird.r<p.x+52&&(bird.y-bird.r<p.top||bird.y+bird.r>p.top+p.gap)});if(hit){state='over';msg.textContent='기록 '+score+'점! 다시 도전해보세요.';if(score>best){best=score;localStorage.setItem('leechanheeGameBest',best);bestEl.textContent=best}draw();return}draw();requestAnimationFrame(loop)}
+document.getElementById('gameStart').addEventListener('click',reset);document.getElementById('gameJump').addEventListener('click',flap);canvas.addEventListener('pointerdown',function(e){e.preventDefault();flap()});document.addEventListener('keydown',function(e){if((e.code==='Space'||e.code==='ArrowUp')&&document.activeElement.tagName!=='BUTTON'){e.preventDefault();flap()}});draw()})();
+
 </script>
 </body>
 </html>
